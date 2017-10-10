@@ -113,12 +113,34 @@ namespace HumaneSociety
 
             
         }
-        public void checkSex()
-        {
+        //public void checkSex()
+        //{
+        //    Console.WriteLine("male or female");
+        //    string animalSex = Console.ReadLine();
 
-        }
+        //    var results = (from Animal in humaneSociety.Animals
+        //                   where Animal.Sex == animalSex
+        //                   select Animal).ToList();
+        //    foreach(var type in results)
+        //    {
+        //        //
+        //    }
+
+        //}
         public void checkBreed()
         {
+            Console.WriteLine("what type of breed are you looking for?");
+            String animalBreed = Console.ReadLine();
+
+            var results = (from Animal in humaneSociety.Animals
+                           where Animal.Breed == animalBreed
+                           select Animal).ToList();
+            foreach (var type in results)
+            {
+                Console.WriteLine("These are the type of breeds we currently have" + type.Breed);
+                Console.ReadLine();
+            }
+
 
         }
         public void checkSize()
