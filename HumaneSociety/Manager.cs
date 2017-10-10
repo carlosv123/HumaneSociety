@@ -10,10 +10,12 @@ namespace HumaneSociety
     {
         HumaneSocietyDataContext humaneSociety = new HumaneSocietyDataContext();
         Customer customer;
+        Animal animal;
 
         public Manager()
         {
             customer = new Customer();
+            animal = new Animal();
         }
 
         public void EntryMenu()
@@ -160,7 +162,7 @@ namespace HumaneSociety
         }
         public void GetEmployee()
         {
-            Console.WriteLine("welcome employee, what would you like to do today? \n 1: Add animal \n 2: collect money from adopter \n 3: search animal location \n 4: keep track of animals food  ");
+            Console.WriteLine("welcome employee, what would you like to do today? \n 1: Add animal \n 2: collect money from adopter \n 3: search animal location \n 4: keep track of animals food \n 5: change status of animal");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -181,15 +183,46 @@ namespace HumaneSociety
                     AnimalsFood();
                     break;
 
+                case "5":
+                    ChangeStatus();
+                    break;
+
                 default:
                     Console.WriteLine("Wrong entry please try again");
-                    break;
-                    
-                    
+                    break;        
             }
                                
         }
+        public void AddAnimal()
+        {
+            Console.WriteLine("what's the name of the animal that you would like to add?");
+            animal.Name = Console.ReadLine();
 
+            Console.WriteLine("what type of animal is the animal you would like to add?");
+            animal.Type_ = Console.ReadLine();
+
+            Console.WriteLine("what type of breed is the animal?");
+            animal.Breed = Console.ReadLine();
+
+            Console.WriteLine("What room would you like to place the pet in?");
+            animal.Room = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("how much food does the animal consume in a week?");
+            animal.Food_Amount = Console.ReadLine();
+
+            Console.WriteLine("set the price of the animal");                                 /
+            animal.Price = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("what's the sex of the animal?");
+            animal.Sex = Console.ReadLine();
+
+            Console.WriteLine("Does the animal have its shots?");
+            animal.Shots = Console.ReadLine();
+
+            Console.WriteLine("what size is the animal?");
+            animal.Size = Console.ReadLine();
+
+        }
 
 
     }
