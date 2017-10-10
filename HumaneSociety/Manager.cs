@@ -67,11 +67,7 @@ namespace HumaneSociety
             customer.Phone_Number = Console.ReadLine();
 
         }
-        public void GetEmployee()
-        {
-            Console.WriteLine();
-
-        }
+        
         public void CheckInventory()
         {
             Console.WriteLine("would you like to search for an specific trait? \n 1:type \n 2:sex \n 3:breed \n 4:size");
@@ -84,7 +80,7 @@ namespace HumaneSociety
                     break;
 
                 case "2":
-                    checkedSex();
+                    checkSex();
                     break;
 
                 case "3":
@@ -101,7 +97,34 @@ namespace HumaneSociety
             }
 
         }
-        
+        public void checkType()
+        {
+            Console.WriteLine("what type of animal are you looking for?");
+            string animalType = Console.ReadLine();
+
+            var results = (from Animal in humaneSociety.Animals
+                           where Animal.Type_ == animalType
+                           select Animal).ToList();
+            foreach(var type in results)
+            {
+                Console.WriteLine("These are the types of animals we currently have"+ type.Type_);
+                Console.ReadLine();
+            }
+
+            
+        }
+        public void checkSex()
+        {
+
+        }
+        public void checkBreed()
+        {
+
+        }
+        public void checkSize()
+        {
+
+        }
       
 
 
