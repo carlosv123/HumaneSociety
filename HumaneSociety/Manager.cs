@@ -233,16 +233,25 @@ namespace HumaneSociety
                           select animal).ToList();
             foreach (var room in results)
             {
-                Console.WriteLine("A {0) is placed in this {1}" + room.Room);
+                Console.WriteLine("A {0) is placed in this {1}",room.Name, room.Room);
                 Console.ReadLine();
             }
                           
         }
         public void AnimalsFood()
         {
+            var results = from animal in humaneSociety.Animals
+                          where animal.Food_Amount == animal.Food_Amount
+                          select animal;
 
+            foreach(var food in results)
+            {
+                Console.WriteLine("all the animals food amount", food.Food_Amount);
+
+            }
+            Console.ReadLine();
         }
-        
+       
 
 
     }
