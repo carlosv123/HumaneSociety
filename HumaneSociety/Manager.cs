@@ -9,10 +9,11 @@ namespace HumaneSociety
      public class Manager
     {
         HumaneSocietyDataContext humaneSociety = new HumaneSocietyDataContext();
+        Customer customer;
 
         public Manager()
         {
-
+            customer = new Customer();
         }
 
         public void EntryMenu()
@@ -23,16 +24,16 @@ namespace HumaneSociety
             switch(choice)
             {
                 case "1":
-                    CheckAdopter();
+                    GetAdopter();
                     break;
                 case "2":
-                    CheckEmployee();
+                    GetEmployee();
                     break;
             }
         }
-        public void CheckAdopter()
+        public void GetAdopter()
         {
-            Console.WriteLine("Are you a new adopter or an exsisting adopter \n 1: new adopter \n 2: I'm an exsisting adopter");
+            Console.WriteLine("Welcome, would you like to create an account with us or would you just like search for a pet?");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -41,11 +42,69 @@ namespace HumaneSociety
                     GetNewAdopter();
                     break;
                 case "2":
-                    GetExsistingAdopter();
+                    CheckInventory();
+                    break;
+
+                default:
+                    Console.WriteLine("Sorry wrong entry, please try again.");
+                        break;
+              
+            }
+        }
+       
+        public void GetNewAdopter()
+        {
+            Console.WriteLine("Please enter you first name");
+            customer.First_Name = Console.ReadLine();
+
+            Console.WriteLine("Plese Enter your last name");
+            customer.Last_Name = Console.ReadLine();
+
+            Console.WriteLine("Plese enter your age");
+            customer.age = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Please enter your phone number");
+            customer.Phone_Number = Console.ReadLine();
+
+        }
+        public void GetEmployee()
+        {
+            Console.WriteLine();
+
+        }
+        public void CheckInventory()
+        {
+            Console.WriteLine("would you like to search for an specific trait? \n 1:type \n 2:sex \n 3:breed \n 4:size");
+            string trait = Console.ReadLine();
+
+            switch (trait)
+            {
+                case "1":
+                    checkType();
+                    break;
+
+                case "2":
+                    checkedSex();
+                    break;
+
+                case "3":
+                    checkBreed();
+                    break;
+
+                case "4":
+                    checkSize();
+                    break;
+
+                default:
+                    Console.ReadLine();
                     break;
             }
+
         }
         
       
+
+
+
     }
 }
