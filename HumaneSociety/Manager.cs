@@ -107,15 +107,15 @@ namespace HumaneSociety
             var results = (from Animal in humaneSociety.Animals
                            where Animal.Type_ == animalType
                            select Animal).ToList();
-            foreach(var type in results)
+            foreach (var type in results)
             {
-                Console.WriteLine("These are the types of animals we currently have"+ type.Type_);
+                Console.WriteLine("These are the types of animals we currently have" + type.Type_);
                 Console.ReadLine();
             }
 
-            
+
         }
-         public void checkSex() { }
+        public void checkSex() { }
         //{
         //    Console.WriteLine("male or female\n 1: male \n 2: female");
         //    string animalSex = Console.ReadLine();
@@ -148,7 +148,7 @@ namespace HumaneSociety
         }
         public void checkSize()
         {
-            Console.WriteLine("what type of sizeare you looking for?");
+            Console.WriteLine("what type of size ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,are you looking for?");
             string animalSize = Console.ReadLine();
 
             var results = (from Animal in humaneSociety.Animals
@@ -172,7 +172,7 @@ namespace HumaneSociety
                     break;
 
                 case "2":
-                    CollectAnimal();
+                    CollectMoney();
                     break;
 
                 case "3":
@@ -210,7 +210,7 @@ namespace HumaneSociety
             Console.WriteLine("how much food does the animal consume in a week?");
             animal.Food_Amount = Console.ReadLine();
 
-            Console.WriteLine("set the price of the animal");                                 /
+            Console.WriteLine("set the price of the animal");                              
             animal.Price = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("what's the sex of the animal?");
@@ -223,6 +223,26 @@ namespace HumaneSociety
             animal.Size = Console.ReadLine();
 
         }
+        public void AnimalLocation()
+        {
+            Console.WriteLine("Enter the room number that you like to search for");
+            int RoomNumber = Convert.ToInt32(Console.ReadLine());
+
+            var results = (from animal in humaneSociety.Animals
+                          where animal.Room == RoomNumber
+                          select animal).ToList();
+            foreach (var room in results)
+            {
+                Console.WriteLine("A {0) is placed in this {1}" + room.Room);
+                Console.ReadLine();
+            }
+                          
+        }
+        public void AnimalsFood()
+        {
+
+        }
+        
 
 
     }
