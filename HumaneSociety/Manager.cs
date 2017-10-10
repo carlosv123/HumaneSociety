@@ -33,7 +33,7 @@ namespace HumaneSociety
         }
         public void GetAdopter()
         {
-            Console.WriteLine("Welcome, would you like to create an account with us or would you just like search for a pet?");
+            Console.WriteLine("Welcome, would you like to create an account with us or would you just like too search for a pet?");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -113,17 +113,18 @@ namespace HumaneSociety
 
             
         }
-        //public void checkSex()
+         public void checkSex() { }
         //{
-        //    Console.WriteLine("male or female");
+        //    Console.WriteLine("male or female\n 1: male \n 2: female");
         //    string animalSex = Console.ReadLine();
 
-        //    var results = (from Animal in humaneSociety.Animals
-        //                   where Animal.Sex == animalSex
-        //                   select Animal).ToList();
-        //    foreach(var type in results)
+        //    switch(animalSex)
         //    {
-        //        //
+        //        case "1":
+        //            break;
+
+        //        case "2":
+        //            break;
         //    }
 
         //}
@@ -157,7 +158,37 @@ namespace HumaneSociety
                 Console.ReadLine();
             }
         }
-      
+        public void GetEmployee()
+        {
+            Console.WriteLine("welcome employee, what would you like to do today? \n 1: Add animal \n 2: collect money from adopter \n 3: search animal location \n 4: keep track of animals food  ");
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    AddAnimal();
+                    break;
+
+                case "2":
+                    CollectAnimal();
+                    break;
+
+                case "3":
+                    AnimalLocation();
+                    break;
+
+                case "4":
+                    AnimalsFood();
+                    break;
+
+                default:
+                    Console.WriteLine("Wrong entry please try again");
+                    break;
+                    
+                    
+            }
+                               
+        }
 
 
 
