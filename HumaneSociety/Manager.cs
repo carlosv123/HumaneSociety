@@ -145,7 +145,17 @@ namespace HumaneSociety
         }
         public void checkSize()
         {
+            Console.WriteLine("what type of sizeare you looking for?");
+            string animalSize = Console.ReadLine();
 
+            var results = (from Animal in humaneSociety.Animals
+                           where Animal.Size == animalSize
+                           select Animal).ToList();
+            foreach (var type in results)
+            {
+                Console.WriteLine("These are the type of size of animals we currently have" + type.Size);
+                Console.ReadLine();
+            }
         }
       
 
