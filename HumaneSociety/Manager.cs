@@ -219,14 +219,14 @@ namespace HumaneSociety
             animal.Breed = Console.ReadLine();
 
             Console.WriteLine("What room would you like to place the pet in?");
-            animal.Room = Convert.ToInt32(Console.ReadLine());
             try
             {
-                customer.age = Int32.Parse(Console.ReadLine());
+                animal.Room = Int32.Parse(Console.ReadLine());
             }
             catch (FormatException e)
             {
                 Console.WriteLine("Error: " + e.Message);
+                Console.ReadLine();
             }
 
             Console.WriteLine("how much food does the animal consume in a week?");
