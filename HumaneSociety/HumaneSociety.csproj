@@ -44,8 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs" />
-    <Compile Include="employee.cs" />
     <Compile Include="HumaneSociety.cs">
       <DependentUpon>HumaneSociety.dbml</DependentUpon>
     </Compile>

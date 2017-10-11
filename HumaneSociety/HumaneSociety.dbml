@@ -22,6 +22,8 @@
       <Column Name="Last_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Phone_Number" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Money" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PayMent" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Employee" Member="Employees">
@@ -29,6 +31,7 @@
       <Column Name="Employee_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="First_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Last_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="takePayment" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

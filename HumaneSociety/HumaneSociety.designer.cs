@@ -414,6 +414,10 @@ namespace HumaneSociety
 		
 		private System.Nullable<int> _age;
 		
+		private System.Nullable<int> _Money;
+		
+		private System.Nullable<int> _PayMent;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -428,6 +432,10 @@ namespace HumaneSociety
     partial void OnPhone_NumberChanged();
     partial void OnageChanging(System.Nullable<int> value);
     partial void OnageChanged();
+    partial void OnMoneyChanging(System.Nullable<int> value);
+    partial void OnMoneyChanged();
+    partial void OnPayMentChanging(System.Nullable<int> value);
+    partial void OnPayMentChanged();
     #endregion
 		
 		public Customer()
@@ -535,6 +543,46 @@ namespace HumaneSociety
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Money", DbType="Int")]
+		public System.Nullable<int> Money
+		{
+			get
+			{
+				return this._Money;
+			}
+			set
+			{
+				if ((this._Money != value))
+				{
+					this.OnMoneyChanging(value);
+					this.SendPropertyChanging();
+					this._Money = value;
+					this.SendPropertyChanged("Money");
+					this.OnMoneyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayMent", DbType="Int")]
+		public System.Nullable<int> PayMent
+		{
+			get
+			{
+				return this._PayMent;
+			}
+			set
+			{
+				if ((this._PayMent != value))
+				{
+					this.OnPayMentChanging(value);
+					this.SendPropertyChanging();
+					this._PayMent = value;
+					this.SendPropertyChanged("PayMent");
+					this.OnPayMentChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -568,6 +616,8 @@ namespace HumaneSociety
 		
 		private string _Last_Name;
 		
+		private System.Nullable<int> _takePayment;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -578,6 +628,8 @@ namespace HumaneSociety
     partial void OnFirst_NameChanged();
     partial void OnLast_NameChanging(string value);
     partial void OnLast_NameChanged();
+    partial void OntakePaymentChanging(System.Nullable<int> value);
+    partial void OntakePaymentChanged();
     #endregion
 		
 		public Employee()
@@ -641,6 +693,26 @@ namespace HumaneSociety
 					this._Last_Name = value;
 					this.SendPropertyChanged("Last_Name");
 					this.OnLast_NameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_takePayment", DbType="Int")]
+		public System.Nullable<int> takePayment
+		{
+			get
+			{
+				return this._takePayment;
+			}
+			set
+			{
+				if ((this._takePayment != value))
+				{
+					this.OntakePaymentChanging(value);
+					this.SendPropertyChanging();
+					this._takePayment = value;
+					this.SendPropertyChanged("takePayment");
+					this.OntakePaymentChanged();
 				}
 			}
 		}

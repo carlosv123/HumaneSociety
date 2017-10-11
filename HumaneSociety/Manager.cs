@@ -46,6 +46,9 @@ namespace HumaneSociety
                 case "2":
                     CheckInventory();
                     break;
+                case "3":
+                    MakePayment();
+                    break;
 
                 default:
                     Console.WriteLine("Sorry wrong entry, please try again.");
@@ -69,6 +72,7 @@ namespace HumaneSociety
             customer.Phone_Number = Console.ReadLine();
 
         }
+
         
         public void CheckInventory()
         {
@@ -140,6 +144,7 @@ namespace HumaneSociety
                            select Animal).ToList();
             foreach (var type in results)
             {
+                Console.WriteLine(type.Name);
                 Console.WriteLine("These are the type of breeds we currently have" + type.Breed);
                 Console.ReadLine();
             }
@@ -148,7 +153,7 @@ namespace HumaneSociety
         }
         public void checkSize()
         {
-            Console.WriteLine("what type of size ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,are you looking for?");
+            Console.WriteLine("what type of size are you looking for?");
             string animalSize = Console.ReadLine();
 
             var results = (from Animal in humaneSociety.Animals
@@ -156,7 +161,7 @@ namespace HumaneSociety
                            select Animal).ToList();
             foreach (var type in results)
             {
-                Console.WriteLine("These are the type of size of animals we currently have" + type.Size);
+                Console.WriteLine("These are the type of size of animals we currently have");
                 Console.ReadLine();
             }
         }
@@ -172,7 +177,7 @@ namespace HumaneSociety
                     break;
 
                 case "2":
-                    CollectMoney();
+                    TakePayment();
                     break;
 
                 case "3":
@@ -184,7 +189,7 @@ namespace HumaneSociety
                     break;
 
                 case "5":
-                    ChangeStatus();
+                    //ChangeStatus();
                     break;
 
                 default:
@@ -222,6 +227,9 @@ namespace HumaneSociety
             Console.WriteLine("what size is the animal?");
             animal.Size = Console.ReadLine();
 
+            humaneSociety.Animals.InsertOnSubmit(animal);
+            humaneSociety.SubmitChanges();
+
         }
         public void AnimalLocation()
         {
@@ -233,7 +241,7 @@ namespace HumaneSociety
                           select animal).ToList();
             foreach (var room in results)
             {
-                Console.WriteLine("A {0) is placed in this {1}",room.Name, room.Room);
+                Console.WriteLine("A {0) is placed in this {1}",room.Type_, room.Room);
                 Console.ReadLine();
             }
                           
@@ -251,8 +259,17 @@ namespace HumaneSociety
             }
             Console.ReadLine();
         }
-       
+       public void MakePayment()
+        {
+            Console.WriteLine("Enter payment");
+            customer.PayMent = Convert.ToInt32(Console.ReadLine());
 
+            
 
+        }
+        public void TakePayment()
+        {
+           
+        }
     }
 }
