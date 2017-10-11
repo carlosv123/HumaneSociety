@@ -35,7 +35,7 @@ namespace HumaneSociety
         }
         public void GetAdopter()
         {
-            Console.WriteLine("Welcome, would you like to create an account with us or would you just like too search for a pet?");
+            Console.WriteLine("Welcome, would you like to create an account with us or would you just like too search for a pet? \n 1: Create account \n 2: Search for pet \n 3: make payment");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -47,7 +47,7 @@ namespace HumaneSociety
                     CheckInventory();
                     break;
                 case "3":
-                    //MakePayment();
+                    makePayment();
                     break;
 
                 default:
@@ -154,7 +154,7 @@ namespace HumaneSociety
                       select animal;
             foreach(var animal in sex)
             {
-                Console.WriteLine("{0} : {1} : {2}", animal.Type_,animal.Name,animal.Sex);
+                Console.WriteLine("{0} : {1} : {2}", animal.Type_, animal.Name, animal.Sex);
             }
             Console.ReadLine();
         }
@@ -238,13 +238,13 @@ namespace HumaneSociety
             Console.WriteLine("what type of animal is the animal you would like to add?");
             animal.Type_ = Console.ReadLine();
 
-            Console.WriteLine("what type of breed is the animal?");
+            Console.WriteLine("what type of breed is the animal?(no spaces)");
             animal.Breed = Console.ReadLine();
 
             Console.WriteLine("What room would you like to place the pet in?");
             animal.Room = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("how much food does the animal consume in a week?");
+            Console.WriteLine("how much many cups does the animal consume in a week?");
             animal.Food_Amount = Console.ReadLine();
 
             Console.WriteLine("set the price of the animal");
@@ -265,17 +265,17 @@ namespace HumaneSociety
         }
         public void AnimalLocation()
         {
-            Console.WriteLine("Enter the room number that you like to search for");
-            int RoomNumber = Int32.Parse(Console.ReadLine());
-
-            var results = (from animal in humaneSociety.Animals
-                          where animal.Room == RoomNumber
-                          select animal).ToList();
-            foreach (var room in results)
-            {
-                Console.WriteLine("");
-                Console.ReadLine();
-            }
+            var room = from animal in humaneSociety.Animals
+                       group animal by new { animal.Type_, animal.Name, animal.Room };
+            foreach(var animal in room) 
+                {
+                Console.WriteLine(animal.Key + ":");
+                
+                }
+            Console.WriteLine("Press enter to go back to the Employee menu");
+            Console.ReadLine();
+            GetEmployee();
+                      
                           
         }
         public void AnimalsFood()
@@ -289,22 +289,30 @@ namespace HumaneSociety
             foreach(var animalFoodAmount in results)             //FIX THIS
             {
                 Console.WriteLine(animalFoodAmount.Key + ":");
-                Console.ReadLine();
+               
                 
             }
+           
             
         }
-       //public void MakePayment()
-       // {
-       //     Console.WriteLine("Enter payment");
-       //     customer.PayMent = Convert.ToInt32(Console.ReadLine());
+        public void makePayment()
+        {
+            Console.WriteLine("Enter payment");
+            customer.PayMent = Convert.ToInt32(Console.ReadLine());
 
-            
+            humaneSociety.Customers.InsertOnSubmit(customer);
+            humaneSociety.SubmitChanges();
 
-       // }
-       // public void TakePayment()
-       // {
-           
-       // }
+            Console.WriteLine("Payment recieved. press enter to go back to the menu");
+            Console.ReadLine();
+            GetAdopter();
+
+
+
+        }
+        // public void TakePayment()
+        // {
+
+        // }
     }
 }
