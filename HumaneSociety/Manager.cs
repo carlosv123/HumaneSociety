@@ -137,7 +137,7 @@ namespace HumaneSociety
                     break;
 
                 case "2":
-                    //maleAnimal();
+                    femaleAnimal();
                     break;
 
                 default:
@@ -154,14 +154,20 @@ namespace HumaneSociety
                       select animal;
             foreach(var animal in sex)
             {
-                Console.WriteLine("these are the male animals we currently have : {0}", animal.Type_);
+                Console.WriteLine("{0} : {1} : {2}", animal.Type_,animal.Name,animal.Sex);
             }
             Console.ReadLine();
-                       
+        }
+        public void femaleAnimal()
+        {
+            var sex = from animal in humaneSociety.Animals
+                      where animal.Sex.Contains("female")
+                     select animal;
             foreach(var animal in sex)
             {
-                Console.WriteLine(animal.Sex);
+                Console.WriteLine("{0} : {1} : {2}", animal.Type_, animal.Name, animal.Sex);
             }
+            Console.ReadLine();
         }
         
 
@@ -236,20 +242,12 @@ namespace HumaneSociety
             animal.Breed = Console.ReadLine();
 
             Console.WriteLine("What room would you like to place the pet in?");
-            try
-            {
-                animal.Room = Int32.Parse(Console.ReadLine());
-            }
-            catch (FormatException e)
-            {
-                Console.WriteLine("Error: " + e.Message);
-                Console.ReadLine();
-            }
+            animal.Room = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("how much food does the animal consume in a week?");
             animal.Food_Amount = Console.ReadLine();
 
-            Console.WriteLine("set the price of the animal");                              
+            Console.WriteLine("set the price of the animal");
             animal.Price = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("what's the sex of the animal?");
