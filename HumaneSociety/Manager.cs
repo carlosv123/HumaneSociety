@@ -103,7 +103,7 @@ namespace HumaneSociety
                     break;
 
                 case "4":
-                    checkSize();
+                    checkPrice();
                     break;
 
                 default:
@@ -153,19 +153,18 @@ namespace HumaneSociety
             CheckInventory();
 
         }
-        public void checkSize()
+        public void checkPrice()
         {
-            Console.WriteLine("what type of size are you looking for?");
-            string animalSize = Console.ReadLine();
-
-            var results = (from Animal in humaneSociety.Animals
-                           where Animal.Size == animalSize
-                           select Animal).ToList();
-            foreach (var type in results)
+            var size = from animal in humaneSociety.Animals
+                       group animal by new { animal.Name, animal.Type_, animal.Price };
+            foreach (var animal in size)
             {
-                Console.WriteLine("These are the type of size of animals we currently have");
-                Console.ReadLine();
+                Console.WriteLine(animal.Key + ":");
             }
+            Console.WriteLine("Press enter if you would like to search for anothe specific trait");
+            Console.ReadLine();
+            CheckInventory();
+            
         }
         public void GetEmployee()
         {
