@@ -85,7 +85,7 @@ namespace HumaneSociety
         
         public void CheckInventory()
         {
-            Console.WriteLine("would you like to search for an specific trait? \n 1:type \n 2:sex \n 3:breed \n 4:size");
+            Console.WriteLine("search a specific trait \n 1:type \n 2:sex \n 3:breed \n 4:size");
             string trait = Console.ReadLine();
 
             switch (trait)
@@ -114,19 +114,16 @@ namespace HumaneSociety
         }
         public void checkType()
         {
-            Console.WriteLine("what type of animal are you looking for?");
-            string animalType = Console.ReadLine();
-
-            var results = (from Animal in humaneSociety.Animals
-                           where Animal.Type_ == animalType
-                           select Animal).ToList();
-            foreach (var type in results)
+            var type = from animal in humaneSociety.Animals
+                       group animal by new { animal.Name, animal.Type_ };
+                       foreach (var animal in type)
             {
-                Console.WriteLine("These are the types of animals we currently have" + type.Type_);
-                Console.ReadLine();
+                Console.WriteLine(animal.Key + ":");
+                
             }
-
-
+            Console.WriteLine("press enter if you would like to search for another specific trait");
+            Console.ReadLine();
+            CheckInventory();
         }
         public void checkSex() { }
         //{
@@ -148,9 +145,9 @@ namespace HumaneSociety
             Console.WriteLine("what type of breed are you looking for?");
             String animalBreed = Console.ReadLine();
 
-            var results = (from Animal in humaneSociety.Animals
-                           where Animal.Breed == animalBreed
-                           select Animal).ToList();
+            var results = from animal in humaneSociety.Animals
+                          where animal.Breed == animalBreed
+                          select animal;
             foreach (var type in results)
             {
                 Console.WriteLine(type.Name);
@@ -251,30 +248,33 @@ namespace HumaneSociety
         public void AnimalLocation()
         {
             Console.WriteLine("Enter the room number that you like to search for");
-            int RoomNumber = Convert.ToInt32(Console.ReadLine());
+            int RoomNumber = Int32.Parse(Console.ReadLine());
 
             var results = (from animal in humaneSociety.Animals
                           where animal.Room == RoomNumber
                           select animal).ToList();
             foreach (var room in results)
             {
-                Console.WriteLine("A {0) is placed in this {1}",room.Type_, room.Room);
+                Console.WriteLine("");
                 Console.ReadLine();
             }
                           
         }
         public void AnimalsFood()
         {
+            Console.WriteLine("pick an animal you would like to find the food amount");
+            string choice = Console.ReadLine();
+
             var results = from animal in humaneSociety.Animals
-                          where animal.Food_Amount == animal.Food_Amount
-                          select animal;
+                          group animal by new { animal.Name, animal.Type_, animal.Food_Amount };
 
-            foreach(var food in results)
+            foreach(var animalFoodAmount in results)             //FIX THIS
             {
-                Console.WriteLine("all the animals food amount", food.Food_Amount);
-
+                Console.WriteLine(animalFoodAmount.Key + ":");
+                Console.ReadLine();
+                
             }
-            Console.ReadLine();
+            
         }
        //public void MakePayment()
        // {

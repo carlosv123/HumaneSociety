@@ -2,16 +2,16 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="HumaneSociety">
   <DataContextMoniker Name="/HumaneSocietyDataContext" />
   <nestedChildShapes>
-    <classShape Id="a33f4009-e2c1-4fbb-9331-e268cb90e253" absoluteBounds="1.75, 0.625, 2, 2.9247054036458331">
+    <classShape Id="a33f4009-e2c1-4fbb-9331-e268cb90e253" absoluteBounds="2.125, 3.25, 2, 2.9247054036458331">
       <DataClassMoniker Name="/HumaneSocietyDataContext/Animal" />
       <nestedChildShapes>
-        <elementListCompartment Id="27f085a5-01f2-4731-aeef-e5dd6c10ad89" absoluteBounds="1.7650000000000001, 1.085, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="27f085a5-01f2-4731-aeef-e5dd6c10ad89" absoluteBounds="2.14, 3.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b64c19fc-6665-495b-99ac-3591dde17efd" absoluteBounds="4.875, 0.875, 2, 2.1554996744791666">
+    <classShape Id="b64c19fc-6665-495b-99ac-3591dde17efd" absoluteBounds="4.75, 1.875, 2, 2.1554996744791666">
       <DataClassMoniker Name="/HumaneSocietyDataContext/Customer" />
       <nestedChildShapes>
-        <elementListCompartment Id="1089683e-9efe-49ed-84ce-c525a51252fb" absoluteBounds="4.89, 1.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1089683e-9efe-49ed-84ce-c525a51252fb" absoluteBounds="4.765, 2.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="0362618f-c0ff-4e13-bbc1-ce52be7d69b9" absoluteBounds="5.75, 4.75, 2, 1.5785953776041666">
