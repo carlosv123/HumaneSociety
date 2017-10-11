@@ -47,7 +47,7 @@ namespace HumaneSociety
                     CheckInventory();
                     break;
                 case "3":
-                    MakePayment();
+                    //MakePayment();
                     break;
 
                 default:
@@ -67,9 +67,18 @@ namespace HumaneSociety
 
             Console.WriteLine("Plese enter your age");
             customer.age = Convert.ToInt32(Console.ReadLine());
-
+            if(customer.age < 18)
+            {
+                Console.WriteLine("Sorry, it seems like your under 18. Please comeback with a parent");
+                Console.ReadLine();
+                
+            }
+            
             Console.WriteLine("Please enter your phone number");
             customer.Phone_Number = Console.ReadLine();
+
+            humaneSociety.Customers.InsertOnSubmit(customer);
+            humaneSociety.SubmitChanges();
 
         }
 
@@ -177,7 +186,7 @@ namespace HumaneSociety
                     break;
 
                 case "2":
-                    TakePayment();
+                    //TakePayment();
                     break;
 
                 case "3":
@@ -211,6 +220,14 @@ namespace HumaneSociety
 
             Console.WriteLine("What room would you like to place the pet in?");
             animal.Room = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                customer.age = Int32.Parse(Console.ReadLine());
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
 
             Console.WriteLine("how much food does the animal consume in a week?");
             animal.Food_Amount = Console.ReadLine();
@@ -259,17 +276,17 @@ namespace HumaneSociety
             }
             Console.ReadLine();
         }
-       public void MakePayment()
-        {
-            Console.WriteLine("Enter payment");
-            customer.PayMent = Convert.ToInt32(Console.ReadLine());
+       //public void MakePayment()
+       // {
+       //     Console.WriteLine("Enter payment");
+       //     customer.PayMent = Convert.ToInt32(Console.ReadLine());
 
             
 
-        }
-        public void TakePayment()
-        {
+       // }
+       // public void TakePayment()
+       // {
            
-        }
+       // }
     }
 }
