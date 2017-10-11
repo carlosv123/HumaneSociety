@@ -142,19 +142,15 @@ namespace HumaneSociety
         //}
         public void checkBreed()
         {
-            Console.WriteLine("what type of breed are you looking for?");
-            String animalBreed = Console.ReadLine();
-
-            var results = from animal in humaneSociety.Animals
-                          where animal.Breed == animalBreed
-                          select animal;
-            foreach (var type in results)
+            var breed = from animal in humaneSociety.Animals
+                        group animal by new { animal.Name, animal.Breed };
+                        foreach(var animal in breed)
             {
-                Console.WriteLine(type.Name);
-                Console.WriteLine("These are the type of breeds we currently have" + type.Breed);
-                Console.ReadLine();
+                Console.WriteLine(animal.Key + ":");
             }
-
+            Console.WriteLine("press enter if you would like to search for another specific trait");
+            Console.ReadLine();
+            CheckInventory();
 
         }
         public void checkSize()
