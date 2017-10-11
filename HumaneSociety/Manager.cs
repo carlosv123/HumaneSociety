@@ -85,7 +85,7 @@ namespace HumaneSociety
         
         public void CheckInventory()
         {
-            Console.WriteLine("search a specific trait \n 1:type \n 2:sex \n 3:breed \n 4:size");
+            Console.WriteLine("search a specific trait \n 1:type \n 2:sex \n 3:breed \n 4:price");
             string trait = Console.ReadLine();
 
             switch (trait)
@@ -125,22 +125,47 @@ namespace HumaneSociety
             Console.ReadLine();
             CheckInventory();
         }
-        public void checkSex() { }
-        //{
-        //    Console.WriteLine("male or female\n 1: male \n 2: female");
-        //    string animalSex = Console.ReadLine();
+        public void checkSex() 
+        {
+            Console.WriteLine("would you like to search for a female or male animal, \n 1: male \n 2: female");
+            string sex = Console.ReadLine();
 
-        //    switch(animalSex)
-        //    {
-        //        case "1":
-        //            break;
+            switch (sex)
+            {
+                case "1":
+                    maleAnimal();
+                    break;
 
-        //        case "2":
-        //            break;
-        //    }
+                case "2":
+                    //maleAnimal();
+                    break;
 
-        //}
-        public void checkBreed()
+                default:
+                    Console.ReadLine();
+                    break;
+           }      
+
+
+        }
+        public void maleAnimal()
+        {
+            var sex = from animal in humaneSociety.Animals
+                      where animal.Sex.Contains("male")
+                      select animal;
+            foreach(var animal in sex)
+            {
+                Console.WriteLine("these are the male animals we currently have : {0}", animal.Type_);
+            }
+            Console.ReadLine();
+                       
+            foreach(var animal in sex)
+            {
+                Console.WriteLine(animal.Sex);
+            }
+        }
+        
+
+    public void checkBreed()
         {
             var breed = from animal in humaneSociety.Animals
                         group animal by new { animal.Name, animal.Breed };

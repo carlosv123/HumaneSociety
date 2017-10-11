@@ -11,7 +11,7 @@ namespace HumaneSociety
         static void Main(string[] args)
         {
             Manager manage = new Manager();
-            manage.checkPrice();
+            manage.CheckInventory();
             
             //manage.EntryMenu();
         }
