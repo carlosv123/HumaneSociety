@@ -22,7 +22,7 @@ namespace HumaneSociety
 
         public void EntryMenu()
         {
-            Console.WriteLine("Are you an adopter or employee \n 1: adopter \n 2:Employee");
+            Console.WriteLine("Are you an adopter or employee \n 1: Adopter \n 2:Employee");
             string choice = Console.ReadLine();
 
             switch(choice)
@@ -37,7 +37,7 @@ namespace HumaneSociety
         }
         public void GetAdopter()
         {
-            Console.WriteLine("Welcome, would you like to create an account with us or would you just like too search for a pet? \n 1: Create account \n 2: Search for pet \n 3: make payment");
+            Console.WriteLine("Welcome, would you like to create an account with us,search for a pet or make a payment? \n 1: Create account \n 2: Search for pet \n 3: make payment");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -109,7 +109,7 @@ namespace HumaneSociety
                     break;
 
                 default:
-                    Console.ReadLine();
+                    Console.WriteLine("Wrong entry please try again");
                     break;
             }
 
@@ -117,15 +117,15 @@ namespace HumaneSociety
         public void checkType()
         {
             var type = from animal in humaneSociety.Animals
-                       group animal by new { animal.Name, animal.Type_ };
+                       group animal by new { animal.Name, animal.Type_, animal.Size };
                        foreach (var animal in type)
             {
                 Console.WriteLine(animal.Key + ":");
                 
             }
-            Console.WriteLine("press enter if you would like to search for another specific trait");
+            Console.WriteLine("press enter to go back to the main menu");
             Console.ReadLine();
-            CheckInventory();
+            GetAdopter();
         }
         public void checkSex() 
         {
@@ -158,7 +158,10 @@ namespace HumaneSociety
             {
                 Console.WriteLine("{0} : {1} : {2}", animal.Type_, animal.Name, animal.Sex);
             }
+            Console.WriteLine("press enter to search for another specific trait");
             Console.ReadLine();
+            CheckInventory();
+
         }
         public void femaleAnimal()
         {
@@ -169,7 +172,11 @@ namespace HumaneSociety
             {
                 Console.WriteLine("{0} : {1} : {2}", animal.Type_, animal.Name, animal.Sex);
             }
+            Console.WriteLine("press enter to search for another specific trait");
             Console.ReadLine();
+            CheckInventory();
+            
+
         }
         
 
@@ -181,9 +188,9 @@ namespace HumaneSociety
             {
                 Console.WriteLine(animal.Key + ":");
             }
-            Console.WriteLine("press enter if you would like to search for another specific trait");
+            Console.WriteLine("press enter to go back to the main menU");
             Console.ReadLine();
-            CheckInventory();
+            GetAdopter();
 
         }
         public void checkPrice()
@@ -194,14 +201,14 @@ namespace HumaneSociety
             {
                 Console.WriteLine(animal.Key + ":");
             }
-            Console.WriteLine("Press enter if you would like to search for anothe specific trait");
+            Console.WriteLine("Press enter to go to the main menu");
             Console.ReadLine();
             CheckInventory();
             
         }
         public void GetEmployee()
         {
-            Console.WriteLine("welcome employee, what would you like to do today? \n 1: Add animal \n 2: search animal location \n 3: keep track of animals food \n 4: change status of animal");
+            Console.WriteLine("What would you like to do today? \n 1: Add animal \n 2: search animal location \n 3: keep track of animals food \n 4: change status of animal");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -277,7 +284,7 @@ namespace HumaneSociety
                 Console.WriteLine(animal.Key + ":");
                 
                 }
-            Console.WriteLine("Press enter to go back to the employee menu");
+            Console.WriteLine("Press enter to go back to the main menu");
             Console.ReadLine();
             GetEmployee();
                       
