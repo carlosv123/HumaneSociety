@@ -11,11 +11,13 @@ namespace HumaneSociety
         HumaneSocietyDataContext humaneSociety = new HumaneSocietyDataContext();
         Customer customer;
         Animal animal;
+        Employee employee;
 
         public Manager()
         {
             customer = new Customer();
             animal = new Animal();
+            employee = new Employee();
         }
 
         public void EntryMenu()
@@ -209,7 +211,7 @@ namespace HumaneSociety
                     break;
 
                 case "2":
-                    //TakePayment();
+                    //takePayment();
                     break;
 
                 case "3":
@@ -221,7 +223,7 @@ namespace HumaneSociety
                     break;
 
                 case "5":
-                    //ChangeStatus();
+                    changeStatus();
                     break;
 
                 default:
@@ -284,7 +286,7 @@ namespace HumaneSociety
             string choice = Console.ReadLine();
 
             var results = from animal in humaneSociety.Animals
-                          group animal by new { animal.Name, animal.Type_, animal.Food_Amount };
+                          group animal by new { };
 
             foreach(var animalFoodAmount in results)             //FIX THIS
             {
@@ -298,21 +300,30 @@ namespace HumaneSociety
         public void makePayment()
         {
             Console.WriteLine("Enter payment");
-            customer.PayMent = Convert.ToInt32(Console.ReadLine());
+            employee.takePayment = Convert.ToInt32(Console.ReadLine());
 
-            humaneSociety.Customers.InsertOnSubmit(customer);
+            humaneSociety.Employees.InsertOnSubmit(employee);
             humaneSociety.SubmitChanges();
 
             Console.WriteLine("Payment recieved. press enter to go back to the menu");
             Console.ReadLine();
             GetAdopter();
-
-
-
         }
-        // public void TakePayment()
-        // {
-
-        // }
+  
+        // public void changeStatus()
+        //{
+        //    var status = from animal in humaneSociety.Animals
+        //                 where animal.Status == null
+        //              select animal;
+        //    foreach (var animal in status)
+        //    {
+        //        Console.WriteLine("{0} : {1} : {2}", animal.Type_, animal.Name, animal.Status);
+        //    }
+        //    Console.ReadLine();
+        //}
     }
+        
+
+        
+    
 }
