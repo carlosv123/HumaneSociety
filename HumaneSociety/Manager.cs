@@ -201,7 +201,7 @@ namespace HumaneSociety
         }
         public void GetEmployee()
         {
-            Console.WriteLine("welcome employee, what would you like to do today? \n 1: Add animal \n 2: collect money from adopter \n 3: search animal location \n 4: keep track of animals food \n 5: change status of animal");
+            Console.WriteLine("welcome employee, what would you like to do today? \n 1: Add animal \n 2: search animal location \n 3: keep track of animals food \n 4: change status of animal");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -211,18 +211,14 @@ namespace HumaneSociety
                     break;
 
                 case "2":
-                    //takePayment();
-                    break;
-
-                case "3":
                     AnimalLocation();
                     break;
 
-                case "4":
+                case "3":
                     AnimalsFood();
                     break;
 
-                case "5":
+                case "4":
                     changeStatus();
                     break;
 
@@ -261,6 +257,13 @@ namespace HumaneSociety
             Console.WriteLine("what size is the animal?");
             animal.Size = Console.ReadLine();
 
+            Console.WriteLine("Animal added to our inventory, Have a great day!");
+            Console.ReadLine();
+            
+            Console.WriteLine("Press enter to go back to the main menu");
+            Console.ReadLine();
+            GetEmployee();
+
             humaneSociety.Animals.InsertOnSubmit(animal);
             humaneSociety.SubmitChanges();
 
@@ -274,7 +277,7 @@ namespace HumaneSociety
                 Console.WriteLine(animal.Key + ":");
                 
                 }
-            Console.WriteLine("Press enter to go back to the Employee menu");
+            Console.WriteLine("Press enter to go back to the employee menu");
             Console.ReadLine();
             GetEmployee();
                       
@@ -282,20 +285,22 @@ namespace HumaneSociety
         }
         public void AnimalsFood()
         {
-            Console.WriteLine("pick an animal you would like to find the food amount");
+            Console.WriteLine("Choose a type of animal you would like to find out how much cups of food it eats in a week");
             string choice = Console.ReadLine();
 
             var results = from animal in humaneSociety.Animals
-                          group animal by new { };
-
-            foreach(var animalFoodAmount in results)             //FIX THIS
+                          where animal.Type_ == choice || animal.Food_Amount == choice
+                          select animal.Food_Amount;
+                  
+            foreach (var animalFoodAmount in results)             
             {
-                Console.WriteLine(animalFoodAmount.Key + ":");
-               
-                
+                Console.WriteLine(animalFoodAmount + "cups" );
             }
-           
-            
+            Console.WriteLine("Press enter to go back to the main menu");
+            Console.ReadLine();
+            GetEmployee();
+
+
         }
         public void makePayment()
         {
@@ -309,18 +314,18 @@ namespace HumaneSociety
             Console.ReadLine();
             GetAdopter();
         }
-  
-        // public void changeStatus()
-        //{
-        //    var status = from animal in humaneSociety.Animals
-        //                 where animal.Status == null
-        //              select animal;
-        //    foreach (var animal in status)
-        //    {
-        //        Console.WriteLine("{0} : {1} : {2}", animal.Type_, animal.Name, animal.Status);
-        //    }
-        //    Console.ReadLine();
-        //}
+
+        public void changeStatus()
+        {
+            var status = from animal in humaneSociety.Animals
+                         where animal.Status == null
+                         select animal;
+            foreach (var animal in status)
+            {
+                Console.WriteLine("{0} : {1} : {2}", animal.Type_, animal.Name, animal.Status);
+            }
+            Console.ReadLine();
+        }
     }
         
 
